@@ -1,0 +1,123 @@
+#modal{
+    position: absolute;
+    top: calc(50% - 5em);
+    left: calc(50% - 10em);
+    width: 20em;
+    height: 10em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    background-color: tomato;
+    z-index: 2;
+}
+
+#modal > h3{
+    width: 100%;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 13vh;
+    padding: 0 1.7rem 0 1.7rem;
+}
+
+header > h1{
+    font-weight: 500;
+    color: #d1d7db;
+}
+
+header > i{
+    color: #e9edef;
+    font-size: 1.75rem;
+}
+
+main{
+    height: 87vh;
+    padding: 1rem 1rem 0 1rem;
+    background-color: var(--bg-color-3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 25px 25px 0 0;
+}
+
+#show-messages{
+    height: clamp(calc(100% - 64px), calc(100% - 64px), calc(100% - 64px));
+    padding-bottom: 1rem;
+    display: flex;
+    gap: .5em;
+    flex-direction: column-reverse;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#show-messages::-webkit-scrollbar{
+    display: none;
+}
+
+.message{
+    padding: .5em;
+    border-radius: .5em;
+    background-color: #ffffff30;
+    color: #D0D2D2;
+}
+
+#message-area{
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: .4em;
+    width: 100vw;
+    height: clamp(4em, 4em, 4em);
+    padding-left: 2em;
+    padding-right: 2.6em;
+    background-color: #202c33;
+}
+
+#new-message{
+    min-width: calc(100% - 30px);
+    width: calc(100% - 30px);
+    max-width: calc(100% - 30px);
+    min-height: 3em;
+    height: 3em;
+    max-height: 3em;
+    padding: .85rem 1.5rem 0 1.5rem;
+    border: none;
+    border-radius: 50px 50px 50px 50px;
+    font-weight: 400;
+    font-size: .9rem;
+    background-color: #2a3942;
+    color: #fff;
+}
+
+#new-message::-webkit-scrollbar{
+    display: none;
+}
+
+#send-message{
+    width: 3em;
+    height: clamp(3em, 3em, 3em);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btn-send-message{
+    width: 3em;
+    height: 3em;
+    background-color: #8696a0;
+    color: #2d3032;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+#btn-send-message > i:before{
+    transform: translateX(-1px) translateY(1px);
+    font-size: 1.2rem;
+}
