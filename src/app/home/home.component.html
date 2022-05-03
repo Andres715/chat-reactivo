@@ -1,8 +1,10 @@
-<!--<div id="modal">
+<div id="backdrop"></div>
+
+<div id="modal">
     <h3>Ingresa tu usuario:</h3>
-    <input type="text" name="user" placeholder="Escribe tu usuario...">
-    <button>Entrar</button>
-</div>-->
+    <input type="text" name="user" placeholder="Escribe tu usuario..." [(ngModel)]="user" [ngModelOptions]="{standalone: true}">
+    <button type="button" (click)="enter()">Entrar</button>
+</div>
 
 <header>
     <h1>{{user}}</h1>
@@ -10,63 +12,15 @@
 </header>
 <main>
     <div id="show-messages">
-        <div class="message">
-            <h5>User Anonymous 1</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous 2</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous3</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous4</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous5</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous6</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous7</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous8</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous9</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous10</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous11</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous12</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
-        </div>
-        <div class="message">
-            <h5>User Anonymous13</h5>
-            <p>este es un mensaje de prueba para ver como se ve</p>
+        <div class="message" *ngFor="let message of messages">
+            <h5>{{message.user}}</h5>
+            <p>{{message.message}}</p>
         </div>
     </div>
     <div id="message-area">
-        <textarea id="new-message" cols="30" rows="10" placeholder="Escribe tu mensaje..."></textarea>
+        <textarea id="new-message" cols="30" rows="10" placeholder="Escribe tu mensaje..." [(ngModel)]="message" [ngModelOptions]="{standalone:true}"></textarea>
         <div id="send-message">
-            <button id="btn-send-message"><i class="bi bi-send-fill"></i></button>
+            <button id="btn-send-message" (click)="sendMessage()"><i class="bi bi-send-fill"></i></button>
         </div>
     </div>
 </main>
