@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'app-home',
@@ -10,19 +11,20 @@ export class HomeComponent implements OnInit {
 
   public user:string = "";
 
-  public messages:any = [];
   public messagesInOrden:any = [];
 
   public messageJSON:any = {};
   public message:string = "";
 
-  public contador:number = 0;
-  
-
-  constructor() { }
+  constructor(private chat:ChatService) {
+    
+  }
 
   ngOnInit(): void {
-    //this.ingresarNombre();
+    this.chat.onStartChat();
+    setTimeout(() => {
+      this.messagesInOrden = this.chat.chats;
+    }, 500);
   }
 
   enter(){
@@ -35,21 +37,17 @@ export class HomeComponent implements OnInit {
       backdrop.style.display = "none";
       modal.style.display = "none";
     }
+
   }
 
   sendMessage(){
-    this.messageJSON.user = this.user + " " + this.contador;
+    this.messageJSON.user = this.user;
     this.messageJSON.message = this.message;
 
-    this.messagesInOrden.push(this.messageJSON);
+    this.chat.sendMessage(this.messageJSON);
 
-    this.messages = [];
+    this.messagesInOrden = this.chat.chats;
 
-    for(let i = this.messagesInOrden.length; i > 0; i--){
-      this.messages.push(this.messagesInOrden[i - 1]);
-    }
-
-    this.contador++;
     this.message = "";
     this.messageJSON = {};
   }
